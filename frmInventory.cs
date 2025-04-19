@@ -62,6 +62,8 @@ namespace ProjectApp
             string err = "";
             err += Validator.IsPresent(txtThreshold.Text, txtThreshold.Tag.ToString());
             err += Validator.IsInt32(txtThreshold.Text, txtThreshold.Tag.ToString());
+            err += Validator.IsPresent(txtID.Text, txtID.Tag.ToString());
+            err += Validator.IsInt32(txtID.Text, txtID.Tag.ToString());
 
             if (err != "")
             {
@@ -79,14 +81,16 @@ namespace ProjectApp
             }
             else if (isValidThreshold())
             {
+                int itemID = Convert.ToInt32(txtID.Text);
                 int threshold = Convert.ToInt32(txtThreshold.Text);
 
                 using SqlConnection connection = new SqlConnection(connectionString);
 
-                string sql = "UPDATE Items SET Threshold = @threshold WHERE";
+                string sql = "UPDATE Items SET Threshold = @threshold WHERE ItemID = @itemid";
 
                 using SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@threshold", threshold);
+                command.Parameters.AddWithValue("@itemid", itemID);
                 connection.Open();
                 command.ExecuteNonQuery();
 

@@ -49,6 +49,9 @@
             cBoxSearch = new ComboBox();
             txtThreshold = new TextBox();
             btnThreshold = new Button();
+            label1 = new Label();
+            txtID = new TextBox();
+            label6 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgViewItems).BeginInit();
@@ -91,6 +94,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Location = new Point(17, 34);
             label2.Name = "label2";
@@ -106,9 +110,11 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(121, 23);
             txtSearch.TabIndex = 7;
+            txtSearch.Tag = "Search";
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Location = new Point(129, 34);
             label3.Name = "label3";
@@ -118,6 +124,7 @@
             // 
             // textBox2
             // 
+            textBox2.Anchor = AnchorStyles.None;
             textBox2.BackColor = SystemColors.Control;
             textBox2.Location = new Point(199, 31);
             textBox2.Margin = new Padding(3, 2, 3, 2);
@@ -137,6 +144,7 @@
             // 
             // textBox3
             // 
+            textBox3.Anchor = AnchorStyles.None;
             textBox3.BackColor = SystemColors.Control;
             textBox3.Location = new Point(59, 31);
             textBox3.Name = "textBox3";
@@ -156,6 +164,7 @@
             // 
             // button3
             // 
+            button3.Anchor = AnchorStyles.None;
             button3.Location = new Point(6, 22);
             button3.Name = "button3";
             button3.Size = new Size(76, 23);
@@ -165,6 +174,7 @@
             // 
             // button4
             // 
+            button4.Anchor = AnchorStyles.None;
             button4.Location = new Point(97, 22);
             button4.Name = "button4";
             button4.Size = new Size(76, 23);
@@ -197,6 +207,7 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Location = new Point(275, 34);
             label5.Name = "label5";
@@ -206,6 +217,7 @@
             // 
             // textBox4
             // 
+            textBox4.Anchor = AnchorStyles.None;
             textBox4.BackColor = SystemColors.Control;
             textBox4.Location = new Point(329, 31);
             textBox4.Name = "textBox4";
@@ -246,20 +258,21 @@
             cBoxSearch.Name = "cBoxSearch";
             cBoxSearch.Size = new Size(121, 23);
             cBoxSearch.TabIndex = 26;
+            cBoxSearch.Tag = "Search Criteria";
             // 
             // txtThreshold
             // 
             txtThreshold.Anchor = AnchorStyles.None;
-            txtThreshold.Location = new Point(465, 479);
+            txtThreshold.Location = new Point(395, 507);
             txtThreshold.Name = "txtThreshold";
             txtThreshold.Size = new Size(100, 23);
             txtThreshold.TabIndex = 28;
-            txtThreshold.Tag = "Threshold";
+            txtThreshold.Tag = "New Threshold";
             // 
             // btnThreshold
             // 
             btnThreshold.Anchor = AnchorStyles.None;
-            btnThreshold.Location = new Point(321, 479);
+            btnThreshold.Location = new Point(395, 536);
             btnThreshold.Name = "btnThreshold";
             btnThreshold.Size = new Size(138, 23);
             btnThreshold.TabIndex = 29;
@@ -267,11 +280,44 @@
             btnThreshold.UseVisualStyleBackColor = true;
             btnThreshold.Click += btnThreshold_Click;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Location = new Point(341, 485);
+            label1.Name = "label1";
+            label1.Size = new Size(48, 15);
+            label1.TabIndex = 30;
+            label1.Text = "Item ID:";
+            // 
+            // txtID
+            // 
+            txtID.Anchor = AnchorStyles.None;
+            txtID.Location = new Point(395, 481);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(100, 23);
+            txtID.TabIndex = 31;
+            txtID.Tag = "Item ID";
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.None;
+            label6.AutoSize = true;
+            label6.Location = new Point(299, 510);
+            label6.Name = "label6";
+            label6.Size = new Size(90, 15);
+            label6.TabIndex = 32;
+            label6.Tag = "";
+            label6.Text = "New Threshold:";
+            // 
             // frmInventory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 569);
+            Controls.Add(label6);
+            Controls.Add(txtID);
+            Controls.Add(label1);
             Controls.Add(btnThreshold);
             Controls.Add(txtThreshold);
             Controls.Add(cBoxSearch);
@@ -319,5 +365,8 @@
         private ComboBox cBoxSearch;
         private TextBox txtThreshold;
         private Button btnThreshold;
+        private Label label1;
+        private TextBox txtID;
+        private Label label6;
     }
 }
