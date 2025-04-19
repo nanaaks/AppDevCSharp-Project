@@ -61,7 +61,10 @@ namespace ProjectApp
             {
                 if (isValid())
                 {
+                    int userID = Convert.ToInt32(txtID.Text);
                     string passwwd = "password123";
+                    string fname = txtFName.Text;
+                    string lname = txtLName.Text;
                     string jobTitle = cBoxJob.SelectedItem.ToString();
                 }
             }
@@ -94,7 +97,14 @@ namespace ProjectApp
             {
                 if (isValidSearch())
                 {
-                    string target = txtSearch.Text;
+                    using var db = new IMSContext();
+                    string target = txtSearch.Text.ToLower();
+
+                    var results = db.Users
+                        .Where(u => u.UserId.ToLower().Contains(target))
+                        .ToList();
+
+                    dgViewUsers.DataSource = results;
                 }
             }
             catch (Exception ex)
