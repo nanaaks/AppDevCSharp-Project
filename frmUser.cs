@@ -132,5 +132,19 @@ namespace ProjectApp
                     ex.StackTrace, "Exception");
             }
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            var selectedRow = dgViewUsers.SelectedRows[0];
+            string userID = selectedRow.Cells["UserId"].Value.ToString();
+            using var db = new IMSContext();
+            var user = db.Users.FirstOrDefault(u => u.UserId.Equals(userID));
+            if (user != null)
+            {
+                db.Users.Remove(user);
+                db.SaveChanges();
+                MessageBox.Show("User Removed!");
+            }
+        }
     }
 }

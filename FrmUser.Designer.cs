@@ -52,7 +52,7 @@
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.None;
-            btnAdd.Location = new Point(614, 241);
+            btnAdd.Location = new Point(681, 241);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(75, 23);
             btnAdd.TabIndex = 0;
@@ -63,17 +63,18 @@
             // btnRemove
             // 
             btnRemove.Anchor = AnchorStyles.None;
-            btnRemove.Location = new Point(776, 241);
+            btnRemove.Location = new Point(509, 363);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(75, 23);
             btnRemove.TabIndex = 1;
             btnRemove.Text = "Remove";
             btnRemove.UseVisualStyleBackColor = true;
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnUpdate
             // 
             btnUpdate.Anchor = AnchorStyles.None;
-            btnUpdate.Location = new Point(695, 241);
+            btnUpdate.Location = new Point(776, 241);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 2;
@@ -163,7 +164,7 @@
             // btnShow
             // 
             btnShow.Anchor = AnchorStyles.None;
-            btnShow.Location = new Point(41, 361);
+            btnShow.Location = new Point(41, 363);
             btnShow.Name = "btnShow";
             btnShow.Size = new Size(92, 23);
             btnShow.TabIndex = 13;
