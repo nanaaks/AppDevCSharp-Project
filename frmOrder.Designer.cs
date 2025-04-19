@@ -50,6 +50,7 @@
             txtType.Name = "txtType";
             txtType.Size = new Size(110, 23);
             txtType.TabIndex = 38;
+            txtType.Tag = "Order Type";
             // 
             // label8
             // 
@@ -68,6 +69,7 @@
             txtDate.Name = "txtDate";
             txtDate.Size = new Size(110, 23);
             txtDate.TabIndex = 36;
+            txtDate.Tag = "Order Date";
             // 
             // label7
             // 
@@ -123,6 +125,7 @@
             txtID.Name = "txtID";
             txtID.Size = new Size(110, 23);
             txtID.TabIndex = 30;
+            txtID.Tag = "Item ID";
             // 
             // txtName
             // 
@@ -132,6 +135,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(110, 23);
             txtName.TabIndex = 28;
+            txtName.Tag = "Item Name";
             // 
             // txtNum
             // 
@@ -141,6 +145,7 @@
             txtNum.Name = "txtNum";
             txtNum.Size = new Size(110, 23);
             txtNum.TabIndex = 27;
+            txtNum.Tag = "Order No";
             // 
             // label4
             // 
