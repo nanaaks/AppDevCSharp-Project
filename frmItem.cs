@@ -87,6 +87,8 @@ namespace ProjectApp
                     command.Parameters.AddWithValue("@stocklvl", stocklvl);
                     connection.Open();
                     command.ExecuteNonQuery();
+
+                    MessageBox.Show("Item Added!");
                 }
             }
             catch (Exception ex)

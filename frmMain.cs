@@ -63,7 +63,6 @@ namespace ProjectApp
         {
             var newForm = new frmAccount();
             newForm.Show();
-            this.Close();
         }
     }
 }

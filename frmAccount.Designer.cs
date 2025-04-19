@@ -31,10 +31,10 @@
             label1 = new Label();
             label2 = new Label();
             btnConfirm = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtPwdCurrent = new TextBox();
+            txtPwdNew = new TextBox();
             label3 = new Label();
-            textBox3 = new TextBox();
+            txtPwdReentry = new TextBox();
             btnCancel = new Button();
             SuspendLayout();
             // 
@@ -44,9 +44,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(47, 61);
             label1.Name = "label1";
-            label1.Size = new Size(101, 15);
+            label1.Size = new Size(103, 15);
             label1.TabIndex = 0;
-            label1.Text = "Former Password:";
+            label1.Text = "Current Password:";
             // 
             // label2
             // 
@@ -67,22 +67,25 @@
             btnConfirm.TabIndex = 2;
             btnConfirm.Text = "Confirm";
             btnConfirm.UseVisualStyleBackColor = true;
+            btnConfirm.Click += btnConfirm_Click;
             // 
-            // textBox1
+            // txtPwdCurrent
             // 
-            textBox1.Anchor = AnchorStyles.None;
-            textBox1.Location = new Point(154, 58);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 3;
+            txtPwdCurrent.Anchor = AnchorStyles.None;
+            txtPwdCurrent.Location = new Point(154, 58);
+            txtPwdCurrent.Name = "txtPwdCurrent";
+            txtPwdCurrent.Size = new Size(100, 23);
+            txtPwdCurrent.TabIndex = 3;
+            txtPwdCurrent.Tag = "Current Password";
             // 
-            // textBox2
+            // txtPwdNew
             // 
-            textBox2.Anchor = AnchorStyles.None;
-            textBox2.Location = new Point(154, 109);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 4;
+            txtPwdNew.Anchor = AnchorStyles.None;
+            txtPwdNew.Location = new Point(154, 109);
+            txtPwdNew.Name = "txtPwdNew";
+            txtPwdNew.Size = new Size(100, 23);
+            txtPwdNew.TabIndex = 4;
+            txtPwdNew.Tag = "New Password";
             // 
             // label3
             // 
@@ -94,13 +97,14 @@
             label3.TabIndex = 5;
             label3.Text = "Reenter Password:";
             // 
-            // textBox3
+            // txtPwdReentry
             // 
-            textBox3.Anchor = AnchorStyles.None;
-            textBox3.Location = new Point(154, 162);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 6;
+            txtPwdReentry.Anchor = AnchorStyles.None;
+            txtPwdReentry.Location = new Point(154, 162);
+            txtPwdReentry.Name = "txtPwdReentry";
+            txtPwdReentry.Size = new Size(100, 23);
+            txtPwdReentry.TabIndex = 6;
+            txtPwdReentry.Tag = "Reenter Password";
             // 
             // btnCancel
             // 
@@ -119,10 +123,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(317, 270);
             Controls.Add(btnCancel);
-            Controls.Add(textBox3);
+            Controls.Add(txtPwdReentry);
             Controls.Add(label3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtPwdNew);
+            Controls.Add(txtPwdCurrent);
             Controls.Add(btnConfirm);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -137,10 +141,10 @@
         private Label label1;
         private Label label2;
         private Button btnConfirm;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtPwdCurrent;
+        private TextBox txtPwdNew;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox txtPwdReentry;
         private Button btnCancel;
     }
 }

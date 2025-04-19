@@ -1,3 +1,6 @@
+using System.Windows.Forms;
+using System.Xml.Linq;
+using Microsoft.Data.SqlClient;
 using ProjectApp.Models.DataLayer;
 
 namespace ProjectApp
@@ -10,6 +13,8 @@ namespace ProjectApp
         }
 
         string userRole = frmLogin.userRole;
+
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\App_Data\IMSdb.mdf;Integrated Security=True";
 
         private bool isValid()
         {
@@ -75,6 +80,16 @@ namespace ProjectApp
             else if (isValidThreshold())
             {
                 int threshold = Convert.ToInt32(txtThreshold.Text);
+
+                using SqlConnection connection = new SqlConnection(connectionString);
+
+                string sql = "UPDATE Items SET Threshold = @threshold WHERE";
+
+                using SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@threshold", threshold);
+                connection.Open();
+                command.ExecuteNonQuery();
+
                 MessageBox.Show("Reorder Threshold Updated!");
             }
         }
@@ -85,6 +100,7 @@ namespace ProjectApp
             {
                 if (isValid())
                 {
+                    using var db = new IMSContext();
                     int searchby = cBoxSearch.SelectedIndex;
 
                     switch (searchby)
@@ -92,11 +108,23 @@ namespace ProjectApp
                         //Search by Item ID
                         case 0:
                             int itemID = Convert.ToInt32(txtSearch.Text);
+
+                            var idResults = db.Items
+                                .Where(i => i.ItemId == itemID)
+                                .ToList();
+
+                            dgViewItems.DataSource = idResults;
                             break;
 
                         //Search by Item Name
                         case 1:
-                            string itemName = txtSearch.Text;
+                            string itemName = txtSearch.Text.ToLower();
+
+                            var nameResults = db.Items
+                                .Where(i => i.ItemName.ToLower().Contains(itemName))
+                                .ToList();
+
+                            dgViewItems.DataSource = nameResults;
                             break;
                     }
                 }
