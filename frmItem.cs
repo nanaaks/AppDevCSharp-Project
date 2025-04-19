@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace ProjectApp
 {
@@ -16,6 +17,8 @@ namespace ProjectApp
         {
             InitializeComponent();
         }
+
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\App_Data\IMSdb.mdf;Integrated Security=True";
 
         private bool isValid()
         {
@@ -66,6 +69,24 @@ namespace ProjectApp
                     DateTime expiry = Convert.ToDateTime(txtExDate.Text);
                     int threshold = (int)(quantity * 0.3);
                     string stocklvl = "Nominal";
+
+                    using SqlConnection connection = new SqlConnection(connectionString);
+
+                    string sql
+                        = "INSERT INTO Items (ItemID, ItemName, Category, Quantity, Price, ExpiryDate, Threshold, StockLvl) "
+                        + "VALUES (@itemid, @itemname, @category, @quantity, @price, @expiry, @threshold, @stocklvl)";
+
+                    using SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@itemid", itemID);
+                    command.Parameters.AddWithValue("@itemname", itemName);
+                    command.Parameters.AddWithValue("@category", category);
+                    command.Parameters.AddWithValue("@quantity", quantity);
+                    command.Parameters.AddWithValue("@price", price);
+                    command.Parameters.AddWithValue("@expiry", expiry);
+                    command.Parameters.AddWithValue("@threshold", threshold);
+                    command.Parameters.AddWithValue("@stocklvl", stocklvl);
+                    connection.Open();
+                    command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
