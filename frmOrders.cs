@@ -150,10 +150,5 @@ namespace ProjectApp
                     ex.StackTrace, "Exception");
             }
         }
-
-        private void rbtnRestock_CheckedChanged(object sender, EventArgs e)
-        {
-            //
-        }
     }
 }

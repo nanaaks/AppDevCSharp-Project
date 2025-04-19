@@ -168,7 +168,6 @@
             rbtnRestock.TabStop = true;
             rbtnRestock.Text = "Restock";
             rbtnRestock.UseVisualStyleBackColor = true;
-            rbtnRestock.CheckedChanged += rbtnRestock_CheckedChanged;
             // 
             // label6
             // 
