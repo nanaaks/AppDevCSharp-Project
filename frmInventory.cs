@@ -140,5 +140,19 @@ namespace ProjectApp
                     ex.StackTrace, "Exception");
             }
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            var selectedRow = dgViewItems.SelectedRows[0];
+            int itemID = Convert.ToInt32(selectedRow.Cells["ItemID"].Value);
+            using var db = new IMSContext();
+            var item = db.Items.FirstOrDefault(i => i.ItemId == itemID);
+            if (item != null)
+            {
+                db.Items.Remove(item);
+                db.SaveChanges();
+                MessageBox.Show("Item Removed!");
+            }
+        }
     }
 }
