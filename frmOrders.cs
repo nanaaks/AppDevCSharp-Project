@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
 using ProjectApp.Models.DataLayer;
 
@@ -70,7 +71,16 @@ namespace ProjectApp
             }
             else
             {
-                MessageBox.Show("Order Approved!");
+                var selectedRow = dgViewOrders.SelectedRows[0];
+                int orderNo = Convert.ToInt32(selectedRow.Cells["OrderNo"].Value);
+                using var db = new IMSContext();
+                var order = db.Orders.FirstOrDefault(o => o.OrderNo == orderNo);
+                if (order != null)
+                {
+                    order.OrderStatus = "Approved";
+                    db.SaveChanges();
+                    MessageBox.Show("Order Approved!");
+                }
             }
         }
 
@@ -82,7 +92,16 @@ namespace ProjectApp
             }
             else
             {
-                MessageBox.Show("Order Canceled!");
+                var selectedRow = dgViewOrders.SelectedRows[0];
+                int orderNo = Convert.ToInt32(selectedRow.Cells["OrderNo"].Value);
+                using var db = new IMSContext();
+                var order = db.Orders.FirstOrDefault(o => o.OrderNo == orderNo);
+                if (order != null)
+                {
+                    order.OrderStatus = "Canceled";
+                    db.SaveChanges();
+                    MessageBox.Show("Order Canceled!");
+                }
             }
         }
 

@@ -191,9 +191,12 @@
             // 
             // dgViewOrders
             // 
+            dgViewOrders.AllowUserToAddRows = false;
             dgViewOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgViewOrders.Location = new Point(22, 87);
             dgViewOrders.Name = "dgViewOrders";
+            dgViewOrders.ReadOnly = true;
+            dgViewOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgViewOrders.Size = new Size(642, 434);
             dgViewOrders.TabIndex = 19;
             // 
