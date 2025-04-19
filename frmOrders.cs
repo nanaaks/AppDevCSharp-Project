@@ -92,6 +92,7 @@ namespace ProjectApp
             {
                 if (isValid())
                 {
+                    using var db = new IMSContext();
                     int searchby = cBoxSearch.SelectedIndex;
 
                     switch (searchby)
@@ -99,21 +100,45 @@ namespace ProjectApp
                         //Search by Order No
                         case 0:
                             int orderNo = Convert.ToInt32(txtSearch.Text);
+
+                            var numResults = db.Orders
+                                .Where(o => o.OrderNo == orderNo)
+                                .ToList();
+
+                            dgViewOrders.DataSource = numResults;
                             break;
 
                         //Search by Order Date
                         case 1:
                             DateTime orderDate = Convert.ToDateTime(txtSearch.Text);
+
+                            var dateResults = db.Orders
+                                .Where(o => o.OrderDate == orderDate)
+                                .ToList();
+
+                            dgViewOrders.DataSource = dateResults;
                             break;
 
                         //Search by Item ID
                         case 2:
                             int itemID = Convert.ToInt32(txtSearch.Text);
+
+                            var idResults = db.Orders
+                                .Where(o => o.ItemId == itemID)
+                                .ToList();
+
+                            dgViewOrders.DataSource = idResults;
                             break;
 
                         //Search by Item Name
                         case 3:
-                            string itemName = txtSearch.Text;
+                            string itemName = txtSearch.Text.ToLower();
+
+                            var nameResults = db.Orders
+                                .Where(o => o.ItemName.ToLower().Contains(itemName))
+                                .ToList();
+
+                            dgViewOrders.DataSource = nameResults;
                             break;
                     }
                 }
