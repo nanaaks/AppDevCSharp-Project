@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
 using ProjectApp.Models.DataLayer;
 
 namespace ProjectApp
@@ -18,6 +20,7 @@ namespace ProjectApp
             InitializeComponent();
         }
 
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\App_Data\IMSdb.mdf;Integrated Security=True";
 
         private bool isValid()
         {
@@ -61,11 +64,26 @@ namespace ProjectApp
             {
                 if (isValid())
                 {
-                    int userID = Convert.ToInt32(txtID.Text);
-                    string passwwd = "password123";
+                    string userID = txtID.Text;
+                    string passwd = "password123";
                     string fname = txtFName.Text;
                     string lname = txtLName.Text;
                     string jobTitle = cBoxJob.SelectedItem.ToString();
+
+                    using SqlConnection connection = new SqlConnection(connectionString);
+
+                    string sql
+                        = "INSERT INTO Users (UserId, Password, Firstname, Lastname, Job) "
+                        + "VALUES (@UserId, @Password, @Fname, @Lname, @Job)";
+
+                    using SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@UserId", userID);
+                    command.Parameters.AddWithValue("@Password", passwd);
+                    command.Parameters.AddWithValue("@Fname", fname);
+                    command.Parameters.AddWithValue("@Lname", lname);
+                    command.Parameters.AddWithValue("@Job", jobTitle);
+                    connection.Open();
+                    command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
